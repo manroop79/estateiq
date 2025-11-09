@@ -1,103 +1,51 @@
 import Image from "next/image";
 
-export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+export default function Page(){
+    return (
+      <div>
+         <a href="/vault" className="fixed md:top-4 top-6 right-4 z-[60] px-6 py-3 bg-black text-white hover:bg-[var(--primary)] transition-colors rounded-lg shadow-md">Open Vault</a>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <div className="pt-20 md:pt-10 max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-center">
+            
+            {/* Left: Image */}
+            <div className="flex flex-col justify-center items-center">
+              <div className="relative w-full max-w-md aspect-square overflow-hidden mx-auto">
+                <Image src="/hero.jpg" alt="Property compliance illustration" fill className="object-cover" />
+              </div>
+              <p className="md:-mt-14 -mt-8 text-xs italic text-gray-300 text-center">Powered by AI • Real-time Analysis</p>
+            </div>
+
+            {/* Right: Content */}
+            <div className="md:mt-20 mt-4 flex flex-col space-y-3 text-center md:text-left">
+              <h1 className="text-3xl sm:text-4xl font-semibold leading-tight text-white">
+                Welcome to <span className="inline-block bg-gradient-to-r from-[var(--primary)] via-[var(--primary-2)] to-[var(--accent)] bg-clip-text text-transparent animate-pulse-scale filter brightness-110 drop-shadow-lg hover:drop-shadow-xl hover:scale-110 transition-all duration-300">EstateIQ</span>. <span className="font-light text-gray-300">AI insights and analysis for your real estate documents.</span>
+              </h1>
+              
+              <div className="text-sm font-semibold text-gray-400">
+                Entity Extraction + Compliance Checks + AI Insights
+              </div>
+
+                <a href="/vault" className="group inline-block w-fit mx-auto md:mx-0 px-6 py-3 bg-white text-gray-900 rounded-md shadow-md font-medium relative overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                  <span className="absolute inset-0 bg-gradient-to-r from-[var(--primary)] to-[var(--primary-2)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                  <span className="relative z-10 flex items-center justify-center gap-2 group-hover:text-white transition-colors duration-300">
+                    <span className="group-hover:rotate-[360deg] transition-transform duration-500">Get Started with Vault</span>
+                  </span>
+                </a>
+
+            </div>
+
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
   );
 }
+
+// function Stat({ label, value }: { label: string, value: string }) {
+//   return (
+//     <div className="glass rounded-lg p-4 flex flex-col items-center">
+//       <div className="text-lg font-medium">{label}</div>
+//       <div className="text-2xl font-bold mt-1">{value}</div>
+//     </div>
+//   );
+// }
