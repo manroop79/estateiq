@@ -121,13 +121,33 @@ export function DocumentViewer({ document }: DocumentViewerProps) {
       try {
         setLoading(true);
         setDocumentLoaded(false);
+        setPdfError(null);
+        
         const response = await fetch(`/api/storage/signed-url?path=${encodeURIComponent(document.storage_path)}`);
+        
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.error || `Failed to get signed URL: ${response.status}`);
+        }
+        
         const result = await response.json();
+        
+        if (result.error) {
+          throw new Error(result.error);
+        }
+        
         if (result.url) {
           setPdfUrl(result.url);
+        } else {
+          throw new Error("No URL returned from API");
         }
       } catch (error) {
         console.error("Failed to get signed URL:", error);
+        setPdfError(
+          error instanceof Error 
+            ? `Failed to load document: ${error.message}` 
+            : "Failed to load document. Please check your connection."
+        );
       } finally {
         setLoading(false);
       }
@@ -147,7 +167,19 @@ export function DocumentViewer({ document }: DocumentViewerProps) {
 
   function onDocumentLoadError(error: Error) {
     console.error("PDF load error:", error);
-    setPdfError("Failed to load PDF. Please try refreshing the page.");
+    const errorMessage = error.message || "Unknown error";
+    
+    // Provide more specific error messages
+    if (errorMessage.includes("worker") || errorMessage.includes("Worker")) {
+      setPdfError("PDF worker failed to load. Please refresh the page or check your internet connection.");
+    } else if (errorMessage.includes("CORS") || errorMessage.includes("cross-origin")) {
+      setPdfError("Unable to load PDF due to security restrictions. Please contact support.");
+    } else if (errorMessage.includes("fetch")) {
+      setPdfError("Failed to download PDF. Please check your internet connection.");
+    } else {
+      setPdfError(`Failed to load PDF: ${errorMessage}`);
+    }
+    
     setDocumentLoaded(false);
   }
 
