@@ -18,8 +18,23 @@ export default function Page(){
 
             {/* Right: Content */}
             <div className="md:mt-20 mt-4 flex flex-col space-y-3 text-center md:text-left">
-              <h1 className="text-3xl sm:text-4xl font-semibold leading-tight text-white">
-                Welcome to <span className="inline-block bg-gradient-to-r from-[var(--primary)] via-[var(--primary-2)] to-[var(--accent)] bg-clip-text text-transparent animate-pulse-scale filter brightness-110 drop-shadow-lg hover:drop-shadow-xl hover:scale-110 transition-all duration-300">EstateIQ</span>. <span className="font-light text-gray-300">AI insights and analysis for your real estate documents.</span>
+              <h1 className="text-3xl sm:text-4xl font-semibold leading-tight text-white break-words">
+                Welcome to{" "}
+                <span 
+                  className="inline-block bg-gradient-to-r from-[#6f4c8f] via-[#8b6aa6] to-[#9c7cc0] bg-clip-text animate-pulse-scale hover:scale-110 transition-all duration-300"
+                  style={{
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    color: '#9c7cc0', // Fallback color if gradient doesn't work
+                  }}
+                >
+                  EstateIQ
+                </span>
+                .{" "}
+                <span className="font-light text-gray-300">
+                  AI insights and analysis for your real estate documents.
+                </span>
               </h1>
               
               <div className="text-sm font-semibold text-gray-400">

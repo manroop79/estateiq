@@ -12,7 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <html lang="en">
             <body className={inter.className}>
                 <div className="min-h-screen flex relative">
-                    <div aria-hidden className="fixed inset-0 -z-10">
+                    <div aria-hidden="true" className="fixed inset-0 -z-10">
                         <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-slate-950 to-zinc-900"></div>
                         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-indigo-950/20 via-transparent to-transparent"></div>
                         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-slate-800/25 via-transparent to-transparent"></div>
