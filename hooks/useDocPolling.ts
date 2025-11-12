@@ -2,24 +2,21 @@
 import { useEffect } from "react";
 import { supabaseClient } from "@/lib/supabase/client";
 import { useVaultStore } from "@/store/useVaultStore";
+import { dbToUiStatus, type DbDocStatus, type UiDocStatus } from "@/types";
 
-// Store expects these statuses only
-type AllowedStatus = "Pending" | "Error" | "OK" | "Suspect" | "Missing";
-
-// Supabase might return other statuses, so use a wider type
+// Supabase returns DB statuses (lowercase)
 interface DocRow {
   id: string;
-  status: string; // Accept anything, but we'll validate below
+  status: string; // DB returns lowercase: "pending", "ok", "suspect", "missing"
 }
 
-// Runtime validation function
-function isAllowedStatus(status: string): status is AllowedStatus {
+// Runtime validation function to check if status is a valid DB status
+function isDbStatus(status: string): status is DbDocStatus {
   return (
-    status === "Pending" ||
-    status === "Error" ||
-    status === "OK" ||
-    status === "Suspect" ||
-    status === "Missing"
+    status === "pending" ||
+    status === "ok" ||
+    status === "suspect" ||
+    status === "missing"
   );
 }
 
@@ -38,12 +35,12 @@ export function useDocPolling() {
         .in("id", ids);
 
       (data as DocRow[] | null)?.forEach(row => {
-        if (isAllowedStatus(row.status)) {
-          setStatus(row.id, row.status); // Only allowed status values pass
-        } else {
-          // Optionally: Log or handle unknown statuses here
-          // For example: setStatus(row.id, "Error");
+        if (isDbStatus(row.status)) {
+          // Convert DB status (lowercase) to UI status (uppercase)
+          const uiStatus: UiDocStatus = dbToUiStatus(row.status);
+          setStatus(row.id, uiStatus);
         }
+        // Unknown statuses are ignored
       });
     }, 2500);
 
