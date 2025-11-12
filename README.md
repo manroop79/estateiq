@@ -124,10 +124,9 @@ A comprehensive document management system with AI-powered OCR extraction, compl
 - **Database:** Supabase (PostgreSQL)
 - **Storage:** Supabase Storage
 - **OCR:** Tesseract.js
-- **AI:** OpenAI / Anthropic
+- **AI:** OpenAI
 - **UI:** React, Tailwind CSS, Framer Motion
 - **State Management:** Zustand
-- **Forms:** React Hook Form + Zod
 
 ## 🎯 Key Features Explained
 
@@ -246,7 +245,6 @@ npm run copy:pdf-worker  # Copy PDF worker (auto-runs on install)
 
 - **Row Level Security (RLS)** - Enabled on all tables
 - **Private Storage** - Documents require signed URLs
-- **Authentication** - All API routes require authentication
 - **Environment Variables** - Sensitive keys never exposed to client
 
 ## 🚢 Deployment
@@ -267,21 +265,6 @@ The app can be deployed to any platform that supports Next.js:
 - DigitalOcean App Platform
 
 **Note:** Ensure your Supabase project allows connections from your deployment domain.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📝 License
-
-This project is private and proprietary.
-
-## 🆘 Support
-
-For issues and questions:
-1. Check the [Setup Guide](SETUP_GUIDE.md)
-2. Review [Database Setup](docs/DATABASE_SETUP.md)
-3. Open an issue on GitHub
 
 ## 🎉 Acknowledgments
 
