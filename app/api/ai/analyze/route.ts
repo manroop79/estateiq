@@ -84,7 +84,7 @@ export async function POST(req: NextRequest) {
         // Check if using mock data and warn
         const isMockData = rawText.includes('Mock extracted text') || 
                           (rawText.includes('Manroop Singh') && rawText.includes('Rajesh Kumar')) ||
-                          entities.some((e: any) => e.value === 'Manroop Singh' || e.value === 'Rajesh Kumar Sharma');
+                          entities.some((e: { value?: string }) => e.value === 'Manroop Singh' || e.value === 'Rajesh Kumar Sharma');
         
         if (isMockData) {
           console.warn('⚠️ AI Analysis: Detected mock/test data. Results may not be accurate for real documents.');

@@ -8,18 +8,17 @@ type Entity = { key: string; value: string; confidence: number; doc_id: string }
 
 export default function ComplianceCard({
 caseId,
-caseUrl,
 title,
 docs,
 }: {
 caseId: string;
-caseUrl: string;
 title: string;
 docs: VaultDoc[]; // pass local docs (2)
 }) {
 const [entities, setEntities] = useState<Record<string, Entity[]>>({});
 
 const remoteIds = docs.map((d) => d.remoteId).filter(Boolean) as string[];
+const remoteIdsString = remoteIds.join(",");
 
 useEffect(() => {
 (async () => {
@@ -34,7 +33,7 @@ data?.forEach((r) => {
 });
 setEntities(grouped);
 })();
-}, [remoteIds.join(",")]);
+}, [remoteIdsString, remoteIds.length]);
 
 return (
 <section id="compliance-card" className="rounded-xl border border-white/10 bg-[#0c1220] p-5 print:bg-white print:text-black">

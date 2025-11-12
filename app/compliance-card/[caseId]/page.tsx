@@ -59,7 +59,6 @@ return (
 <ActionBar caseUrl={caseUrl} />
 <ComplianceCard
 caseId={record.id}
-caseUrl={caseUrl}
 title={record.title || "Compliance Summary"}
 docs={caseDocs}
 />

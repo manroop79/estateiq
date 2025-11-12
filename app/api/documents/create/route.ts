@@ -5,7 +5,7 @@ import { notifyDocumentUploaded } from "@/lib/n8n/client";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { filename, mime, size, kind } = body;
+    const { filename, size, kind } = body;
 
     const sb = supabaseServer(); // Uses service role key - bypasses RLS
 
