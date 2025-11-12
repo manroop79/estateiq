@@ -61,8 +61,7 @@ export async function POST(req: NextRequest) {
 
     // Build prompt based on analysis type
     let prompt: string;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let result: any;
+    let result: Record<string, unknown>;
 
     switch (analysisType) {
       case 'summarize':
