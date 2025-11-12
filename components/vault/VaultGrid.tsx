@@ -1,4 +1,4 @@
-import type { VaultDoc } from "@/store/useVaultStore";
+import type { VaultDoc } from "@/types";
 import VaultCard from "./VaultCard";
 
 export default function VaultGrid({ docs }: { docs: VaultDoc[] }) {
