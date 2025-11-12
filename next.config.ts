@@ -1,8 +1,7 @@
 import type { NextConfig } from "next";
-import webpack from "webpack";
 
 const nextConfig: NextConfig = {
-  webpack: (config, { isServer }) => {
+  webpack: (config, { isServer, webpack }) => {
     // Exclude Tesseract.js from webpack bundling for server-side
     // Tesseract.js is browser-focused and causes build issues
     if (isServer) {
